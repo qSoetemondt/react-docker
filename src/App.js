@@ -1,26 +1,34 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/Navbar';
+import HomePage from './pages/HomePage';
+import {HashRouter, Switch, Route} from "react-router-dom";
+import UsersPage from './pages/UsersPage';
+import GroupsPage from './pages/GroupsPage';
+import ReactPlayer from 'react-player'
 
+// #/users
+// #/groups
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <HashRouter>
+  <Navbar />
+  
+ 
+// Render a YouTube video player
+<ReactPlayer url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
+  <main className="container">
+    <Switch>
+      <Route path="/users" component={UsersPage} />
+      <Route path="/groups" component={GroupsPage} />
+      <Route path="/" component={HomePage} />
+      
+    </Switch>
+
+  </main>
+
+
+  </HashRouter>
 }
 
 export default App;
